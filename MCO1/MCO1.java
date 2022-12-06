@@ -1,36 +1,20 @@
+package MCO1;
+
 import java.util.Scanner;
+import java.util.Random;
 
 public class MCO1
 {
     public static void main(String[] args)
     {
-        int counter = 0;
         String InputString = "";
         int nSortingAlg = 0;
 
 
         Scanner Scan = new Scanner(System.in);
-        //input validation
-        do {
-            System.out.print("Input String: ");
-            InputString = Scan.nextLine();
-
-            counter = 0;
-
-            char[] InputArr = InputString.toCharArray();
-            for (int i = 0; i < InputArr.length; i++)
-            {
-                if ((InputArr[i] != 'a' ) && (InputArr[i] != 'c') && (InputArr[i] != 't') && (InputArr[i] != 'g'))
-                {
-                    counter++;
-                }
-            }
-            if (counter > 0)
-            {
-                System.out.println("invalid input. Try Again");
-            }
-
-        } while (counter > 0);
+        System.out.print("Input Length: ");
+        int InputLength = Scan.nextInt();
+        InputString = createRandomInput(InputLength);
 
         String [] SuffixArr = createSuffixArray(InputString);
 
@@ -149,5 +133,22 @@ public class MCO1
 
         String[] arr3 = merge(arr1, arr2);
         return arr3;
+    }
+
+    public static String createRandomInput(int inputSize)
+    {
+        String charSet = "atcg";
+        String randomInput = "";
+
+        Random rand = new Random();
+        char[] text = new char[inputSize];
+
+        for(int i = 0; i < inputSize; i++)
+            text[i] = charSet.charAt(rand.nextInt(charSet.length()));
+
+        for(int i = 0; i < text.length; i++)
+            randomInput += text[i];
+
+        return randomInput;
     }
 }
