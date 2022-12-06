@@ -23,4 +23,39 @@ public class MCO1
 
         Scan.close();
     }
+
+    public static String[] createSuffixArray(String sInput)
+    {
+        int nCount;
+        String[] suffixes = new String[sInput.length()];
+        for (nCount = 0; nCount < sInput.length(); nCount++)
+        {
+            suffixes[nCount] = sInput.substring(nCount);
+        }
+
+        return suffixes;
+    }
+
+    public static int[] sortSuffixArrays(String[] suffixes) //to be modified for Strings; selection sort
+    {
+        for ( int j=0; j < array.length-1; j++ )
+        {
+            int min = j;
+            for ( int k=j+1; k < array.length; k++ )
+                if ( array[k].compareTo( array[min] ) < 0 )
+                {
+                    min = k;
+                }
+
+            String temp = array[j];
+            array[j] = array[min];
+            array[min] = temp;
+        }
+    }
+
+    /* idk if dalawa gagawin based on the specs*/
+    public static String[] sortSuffixArrays2(String[] suffixes)
+    {
+        //merge sort
+    }
 }
